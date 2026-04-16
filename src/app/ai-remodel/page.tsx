@@ -100,8 +100,9 @@ export default function AIRemodelPage() {
   const [roomType, setRoomType] = useState<string>('Kitchen');
   const [intensity, setIntensity] = useState<Intensity>('Moderate Remodel');
   const [style, setStyle] = useState('Coastal California Modern');
+  const [customStyle, setCustomStyle] = useState('');
+  const [notes, setNotes] = useState('');
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
   // ── Result
@@ -150,12 +151,14 @@ export default function AIRemodelPage() {
     try {
       // 1. Lead capture
       await submitLead({
-        email,
+        siteId: process.env.NEXT_PUBLIC_SITE_ID,
+        leadName: name,
+        leadPhone: phone,
         roomType,
-        style,
-        requests: `RoomType: ${roomType} | Intensity: ${intensity} | Style: ${style}`,
-        contractorName: `${process.env.NEXT_PUBLIC_BUSINESS_NAME}`,
-        imageUrl: 'uploaded-via-ai-remodel',
+        style: style === 'Other' ? `Other - ${customStyle}` : style,
+        intensity,
+        customNotes: notes,
+        remodelImageURL: 'uploaded-via-ai-remodel',
       });
 
       // 2. Universal Hub call — awaited for Sully Bridge
@@ -337,9 +340,16 @@ export default function AIRemodelPage() {
                     <div className="form-group">
                       <label className="form-label" htmlFor="style-select">Design Style</label>
                       <select id="style-select" className="form-select" value={style} onChange={e => setStyle(e.target.value)}>
-                        {['Coastal California Modern', 'Organic Minimalist', 'Spanish Revival', 'Mid-Century Modern', 'Japandi Coastal', 'Contemporary Farmhouse'].map(s => <option key={s}>{s}</option>)}
+                        {['Coastal California Modern', 'Organic Minimalist', 'Spanish Revival', 'Mid-Century Modern', 'Japandi Coastal', 'Contemporary Farmhouse', 'Other'].map(s => <option key={s}>{s}</option>)}
                       </select>
                     </div>
+
+                    {style === 'Other' && (
+                      <div className="form-group">
+                        <label className="form-label" htmlFor="custom-style">Custom Style Description</label>
+                        <input id="custom-style" type="text" className="form-input" placeholder="E.g., Farmhouse Industrial" value={customStyle} onChange={e => setCustomStyle(e.target.value)} required={style === 'Other'} />
+                      </div>
+                    )}
 
                     <hr style={{ border: 'none', borderTop: '1px solid oklch(0.92 0.006 245)', margin: '0.5rem 0' }} />
                     <p style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-trust-blue)' }}>
@@ -352,16 +362,16 @@ export default function AIRemodelPage() {
                       <input id="lead-name" type="text" className="form-input" placeholder="First & Last Name" value={name} onChange={e => setName(e.target.value)} required />
                     </div>
 
-                    {/* Email */}
+                    {/* Phone First */}
                     <div className="form-group">
-                      <label className="form-label" htmlFor="lead-email">Email Address</label>
-                      <input id="lead-email" type="email" className="form-input" placeholder="you@email.com" value={email} onChange={e => setEmail(e.target.value)} required />
+                      <label className="form-label" htmlFor="lead-phone">Mobile Phone Number</label>
+                      <input id="lead-phone" type="tel" className="form-input" placeholder="(805) 555-0000" value={phone} onChange={e => setPhone(e.target.value)} required />
                     </div>
 
-                    {/* Phone */}
+                    {/* Custom Notes */}
                     <div className="form-group">
-                      <label className="form-label" htmlFor="lead-phone">Phone Number</label>
-                      <input id="lead-phone" type="tel" className="form-input" placeholder="(805) 555-0000" value={phone} onChange={e => setPhone(e.target.value)} required />
+                      <label className="form-label" htmlFor="custom-notes">Project Details / Notes (Optional)</label>
+                      <textarea id="custom-notes" className="form-input" placeholder="Tell us more about your project..." rows={3} value={notes} onChange={e => setNotes(e.target.value)}></textarea>
                     </div>
 
                     {error && (

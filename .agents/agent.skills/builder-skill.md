@@ -91,6 +91,11 @@ return NextResponse.json({ success: true, analysis: confirmedAnalysis, remodelIm
 ### 4.2 Component Build
 Create an AIRemodel page featuring the `<ComparisonSlider>` component and a multi-step project intake form.
 
+**V4.4 'Phone-First' Intake Form Standard**:
+- **Primary Contact**: Remove the mandatory 'Email' field. Replace it with a mandatory 'Mobile Phone Number' field.
+- **Custom Notes**: Add a multi-line 'Project Details/Notes' field to the final step.
+- **'Other' Style Logic**: Add 'Other' to the Style dropdown. When selected, reveal a text input for 'Custom Style Description'.
+
 **Standardized Room Types**: Every implementation MUST support: Kitchen, Bathroom, Living Room, Master Bedroom, Home Office, Dining Room, Exterior/Outdoor, and Commercial Space.
 
 **The "Intensity" Logic**: The form must pass a `remodelIntensity` parameter to the Hub. The Hub's prompt MUST adhere to these definitions:
@@ -122,7 +127,7 @@ Pair it with a `<CheckCircle>` icon in Trust Blue.
 ### 4.4 Functional Requirements
 - **Image Preview**: Render an immediate thumbnail of the user's upload on step 1 selection.
 - **Canvas Stitching**: Implement a client-side Canvas utility to generate a 1920px wide JPG comparison (Before vs. After) for user download.
-- **Conversion Wall**: Require Name, Email, and Phone via a multi-step form before displaying the visualization.
+- **Conversion Wall**: Require Name and Mobile Phone via a multi-step form before displaying the visualization (Email is no longer required).
 - **NO Sully Widget**: Do not implement `sullyText` state, `<SullyAssistant />`, or any floating AI chat widget in the result view. Sully has been removed from all Spoke UI. The Make.com webhook handles lead routing in the background.
 
 
@@ -152,6 +157,8 @@ Sully has been **permanently removed** from the Spoke UI and Hub generation pipe
 
 The `MAKE_SULLY_WEBHOOK_URL` env var is repurposed as the **lead routing webhook**. The Hub fires it non-blocking after image generation:
 
+**Contractor Alert Protocol**: Ensure `SITE_ID` is attached to every payload. The backend (Make.com) will use this ID to look up the contractor's mobile number and trigger an instant SMS alert.
+
 ```typescript
 // Fire-and-forget — never awaited, never blocks the response
 if (makeWebhookUrl) {
@@ -159,10 +166,15 @@ if (makeWebhookUrl) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      leadName:    name    || 'Homeowner',
-      leadPhone:   phone   || 'N/A',
-      serviceType: service || 'General Remodel',
-      analysis:    confirmedAnalysis, // AI-written architectural analysis
+      siteId:         process.env.NEXT_PUBLIC_SITE_ID,
+      leadName:       name    || 'Homeowner',
+      leadPhone:      phone   || 'N/A',
+      roomType:       roomType || 'General Remodel',
+      style:          style   || 'Modern',
+      intensity:      intensity || 'Moderate Remodel',
+      customNotes:    notes   || '',
+      analysis:       confirmedAnalysis,
+      remodelImageURL: imageProxyUrl || '',
     }),
   }).catch(console.error);
 }
@@ -227,3 +239,14 @@ function assertWebhookUrl(url: string): void {
 **Client-Specific Overrides**: If a client requires a unique feature, use a conditional 'toggle' (e.g., `if (SITE_ID === 'johnhart') { showFeature }`). Do not create separate code files for individual clients unless authorized by the Director.
 
 **Deployment Safety**: Before any 'Push to GitHub,' the AI must confirm that the build is clean and that no 'staging' or 'test' IDs have been accidentally committed to the production code.
+
+## 13. Batch Agency Production
+
+This protocol activates whenever I provide a list or CSV of contractors:
+
+- **CSV Parsing**: Automatically extract 'Business Name', 'Location', and 'Niche'.
+- **Autonomous Folder Creation**: For each entry, create `/src/sites/[site-id]/` and initialize the standard content files.
+- **Specialist Delegation**: For every site created, you MUST consult and apply the instructions in `branding-skill.md` for visual identity, `copywriting-skill.md` for the 'Refined Specialist' voice, and `seo-skill.md` for local search optimization.
+- **Visual Intelligence**: Use the Gemini API to analyze the contractor's existing online presence or "hallucinate" a high-end branding palette (OKLCH) based on your specialized branding rules.
+- **Vercel CLI Automation**: For each site, run `vercel project add` and `vercel env add` to set the `SITE_ID` and `BUSINESS_NAME`.
+- **Manifest Logging**: Update a master `agency-manifest.json` file in the root directory to track every site created and its Vercel URL.

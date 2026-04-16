@@ -6,12 +6,14 @@
  */
 
 interface LeadData {
-  email: string;
-  roomType?: string;
-  style?: string;
-  requests?: string;
-  imageUrl?: string;
-  contractorName: string;
+  siteId?: string;
+  leadName: string;
+  leadPhone: string;
+  roomType: string;
+  style: string;
+  intensity: string;
+  customNotes: string;
+  remodelImageURL: string;
 }
 
 // ── Placeholder strings that indicate an unconfigured environment ─────────────
@@ -70,7 +72,7 @@ export const submitLead = async (data: LeadData): Promise<void> => {
       throw new Error(`Lead transmission failed — HTTP ${response.status} from webhook.`);
     }
 
-    console.log(`✅ Buzz Sent: Lead captured for ${data.contractorName} at ${new Date().toISOString()}`);
+    console.log(`✅ Buzz Sent: Lead captured for ${data.leadName} at ${new Date().toISOString()}`);
   } catch (error) {
     console.error('Lead Engine Error:', error);
     throw error;
