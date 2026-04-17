@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: `${process.env.NEXT_PUBLIC_BUSINESS_NAME} | Camarillo's Premier Design-Build Remodeler`,
-  description: "Award-winning architectural design-build remodeling in Camarillo, CA. Kitchens, bathrooms, ADUs, and whole-home transformations built to withstand Camarillo`s coastal salt-air climate. Free design consultation.",
+  description: "Award-winning architectural design-build remodeling in Camarillo, CA. Kitchens, bathrooms, ADUs, and whole-home transformations built to withstand Camarillo's coastal salt-air climate. Free design consultation.",
   keywords: "home remodeling Camarillo, kitchen remodel Camarillo CA, bathroom remodel Ventura County, ADU builder Camarillo, design-build contractor Camarillo, coastal home remodeling",
   openGraph: {
     title: "${process.env.NEXT_PUBLIC_BUSINESS_NAME} | Camarillo, CA",
-    description: "Boutique architectural remodeling for Camarillo`s most discerning homeowners.",
+    description: "Boutique architectural remodeling for Camarillo's most discerning homeowners.",
     type: "website",
     locale: "en_US",
   },

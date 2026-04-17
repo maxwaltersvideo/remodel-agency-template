@@ -66,10 +66,14 @@ export default function ContactPage() {
     e.preventDefault();
     try {
       await submitLead({
-        email: formData.email,
-        roomType: formData.service,
-        requests: formData.projectDesc,
-        contractorName: `${process.env.NEXT_PUBLIC_BUSINESS_NAME}`,
+        siteId: process.env.NEXT_PUBLIC_SITE_ID,
+        leadName: formData.name || 'Homeowner',
+        leadPhone: formData.phone || 'N/A',
+        roomType: formData.service || 'General Inquiry',
+        style: 'Modern',
+        intensity: 'Moderate Remodel',
+        customNotes: formData.projectDesc || 'N/A',
+        remodelImageURL: 'contact-form',
       });
     } catch {
       // Silent fail — form UX continues

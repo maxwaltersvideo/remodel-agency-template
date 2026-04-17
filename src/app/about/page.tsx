@@ -8,8 +8,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: `About ${process.env.NEXT_PUBLIC_BUSINESS_NAME} | Camarillo\`s Boutique Design-Build Firm',
-  description: `Since 2009, ${process.env.NEXT_PUBLIC_BUSINESS_NAME} has been Camarillo\`s trusted design-build partner. Family-owned, local-first, and engineered for the Ventura County coastal climate.',
+  title: `About ${process.env.NEXT_PUBLIC_BUSINESS_NAME} | Camarillo's Boutique Design-Build Firm`,
+  description: `Since 2009, ${process.env.NEXT_PUBLIC_BUSINESS_NAME} has been Camarillo's trusted design-build partner. Family-owned, local-first, and engineered for the Ventura County coastal climate.`,
 };
 
 const timeline = [
@@ -83,8 +83,8 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="reveal-right" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px' }}>
-              <div style={{ aspectRatio: '3/4', position: 'relative', overflow: 'hidden` }}>
-                <Image src="/portfolio-kitchen.png" alt="Precision kitchen craftsmanship by ${process.env.NEXT_PUBLIC_BUSINESS_NAME}" fill quality={75} style={{ objectFit: `cover' }} />
+              <div style={{ aspectRatio: '3/4', position: 'relative', overflow: 'hidden' }}>
+                <Image src="/portfolio-kitchen.png" alt={`Precision kitchen craftsmanship by ${process.env.NEXT_PUBLIC_BUSINESS_NAME}`} fill quality={75} style={{ objectFit: 'cover' }} />
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
                 <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>

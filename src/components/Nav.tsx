@@ -26,7 +26,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`nav ${scrolled ? 'nav--scrolled' : '`}`} role="navigation" aria-label="Main navigation">
+      <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`} role="navigation" aria-label="Main navigation">
         {/* Logo */}
         <Link href="/" className="nav__logo" aria-label="${process.env.NEXT_PUBLIC_BUSINESS_NAME} — Home">
           <Home size={18} strokeWidth={1.5} />
@@ -39,7 +39,7 @@ export default function Nav() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className={`nav__link ${pathname === l.href ? `nav__link--active' : ''}`}
+                className={`nav__link ${pathname === l.href ? 'nav__link--active' : ''}`}
                 aria-current={pathname === l.href ? 'page' : undefined}
               >
                 {l.label}
@@ -49,7 +49,7 @@ export default function Nav() {
         </ul>
 
         {/* Phone + CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem` }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <a href="tel:+18055550192" className="nav__phone" aria-label="Call ${process.env.NEXT_PUBLIC_BUSINESS_NAME}">
             <Phone size={15} strokeWidth={2} />
             (805) 555-0192
@@ -63,7 +63,7 @@ export default function Nav() {
         <button
           className="nav__hamburger"
           id="mobile-menu-toggle"
-          aria-label={mobileOpen ? `Close menu' : 'Open menu'}
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(!mobileOpen)}
         >

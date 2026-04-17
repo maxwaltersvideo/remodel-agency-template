@@ -32,6 +32,7 @@ export interface HubRemodelParams {
   name?: string;       // lead's full name
   phone?: string;      // lead's phone number
   service?: string;    // service of interest from the form
+  customNotes?: string; // specific user requests
 }
 
 export interface HubRemodelResult {
@@ -101,7 +102,7 @@ export async function generateRemodelVision(
     'Moderate Remodel':        'New flooring, updated cabinets/countertops, and hardware ($20k–$50k). Significant transformation within the existing layout.',
     'Complete Transformation': 'Luxury gut renovation with professional-grade finishes and high-end materials ($50k+). Magazine-quality result.',
   };
-  const intensityInstruction = intensityMap[params.remodelIntensity ?? ''] ?? intensityMap['Moderate Remodel`];
+  const intensityInstruction = intensityMap[params.remodelIntensity ?? ''] ?? intensityMap['Moderate Remodel'];
 
   const resolvedPrompt =
     prompt?.trim() ||
@@ -109,7 +110,7 @@ export async function generateRemodelVision(
 
 SPATIAL LOCK PROTOCOL (MANDATORY — never deviate):
 1. Generate ONLY a single remodeled image — no split-screen, no before/after composites.
-2. Keep the room`s basic dimensions and layout intact. Do NOT add or remove walls, windows, or doors.
+2. Keep the room's basic dimensions and layout intact. Do NOT add or remove walls, windows, or doors.
 3. Maintain identical camera coordinates, lens distortion, and architectural anchors (doors, windows, ceiling lines).
 
 ROOM: ${roomType ?? 'room'}
@@ -139,6 +140,7 @@ Deliver a photorealistic architectural render at magazine editorial quality. Loc
           phone: params.phone,
           service: params.service ?? params.roomType,
           remodelIntensity: params.remodelIntensity,
+          customNotes: params.customNotes,
         }),
     });
   } catch (networkErr) {

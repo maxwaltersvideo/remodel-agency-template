@@ -7,7 +7,7 @@ import { ChevronRight, MapPin, Square, Calendar, Star } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: `Portfolio | ${process.env.NEXT_PUBLIC_BUSINESS_NAME} — Camarillo Design-Build Projects`,
-  description: `Browse ${process.env.NEXT_PUBLIC_BUSINESS_NAME}\`s portfolio of completed kitchen remodels, bathroom transformations, ADU builds, and whole-home renovations in Camarillo and Ventura County.',
+  description: `Browse ${process.env.NEXT_PUBLIC_BUSINESS_NAME}'s portfolio of completed kitchen remodels, bathroom transformations, ADU builds, and whole-home renovations in Camarillo and Ventura County.`,
 };
 
 const projects = [
@@ -106,8 +106,8 @@ export default function PortfolioPage() {
         <section className="section" aria-labelledby="case-study-heading">
           <div className="container">
             <div style={{ display: 'grid', gridTemplateColumns: '55fr 45fr', gap: '4rem', alignItems: 'center' }}>
-              <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden` }} className="reveal-left">
-                <Image src="/hero-camarillo.png" alt="Camarillo Heights whole-home transformation by ${process.env.NEXT_PUBLIC_BUSINESS_NAME}" fill quality={75} style={{ objectFit: `cover' }} />
+              <div style={{ position: 'relative', aspectRatio: '4/3', overflow: 'hidden' }} className="reveal-left">
+                <Image src="/hero-camarillo.png" alt="Camarillo Heights whole-home transformation" fill quality={75} style={{ objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', top: '1.5rem', left: '1.5rem', display: 'flex', gap: '0.5rem' }}>
                   <span className="badge">Case Study</span>
                   <span className="badge badge--gold">$420K+</span>

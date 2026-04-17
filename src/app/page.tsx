@@ -136,7 +136,7 @@ export default function HomePage() {
                   4.9 stars · 87 Google Reviews
                 </p>
                 <p style={{ fontSize: '0.75rem', color: 'var(--color-ink-light)' }}>
-                  Camarillo`s top-rated design-build firm
+                  Camarillo's top-rated design-build firm
                 </p>
               </div>
             </div>
@@ -151,7 +151,7 @@ export default function HomePage() {
               priority
               fetchPriority="high"
               quality={75}
-              style={{ objectFit: `cover', objectPosition: 'center' }}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
             />
             {/* Subtle left fade so image bleeds into text */}
             <div
@@ -408,14 +408,14 @@ export default function HomePage() {
                 <p className="footer__heading">Service Area</p>
                 <ul className="footer__links">
                   {['Camarillo', 'Thousand Oaks', 'Oxnard', 'Ventura', 'Moorpark', 'Simi Valley', 'Newbury Park'].map(c => (
-                    <li key={c}><span style={{ color: 'oklch(0.72 0.020 245)` }}>{c}, CA</span></li>
+                    <li key={c}><span style={{ color: 'oklch(0.72 0.020 245)' }}>{c}, CA</span></li>
                   ))}
                 </ul>
               </div>
             </div>
             <div className="footer__bottom">
               <p>© 2025 ${process.env.NEXT_PUBLIC_BUSINESS_NAME}. Lic. #1102847. All rights reserved.</p>
-              <p style={{ fontSize: `0.72rem' }}>
+              <p style={{ fontSize: '0.72rem' }}>
                 <a href="#" style={{ color: 'oklch(0.55 0.020 245)' }}>Privacy Policy</a> · <a href="#" style={{ color: 'oklch(0.55 0.020 245)' }}>Terms of Service</a>
               </p>
             </div>

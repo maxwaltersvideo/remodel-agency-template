@@ -171,6 +171,7 @@ export default function AIRemodelPage() {
         name,
         phone,
         service: roomType,
+        customNotes: notes,
       };
 
       const result = await generateRemodel(params);
