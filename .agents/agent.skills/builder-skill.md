@@ -51,11 +51,8 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 // Two-part prompt: text analysis + image generation
 const prompt = `YOUR RESPONSE MUST CONTAIN TWO PARTS:
-PART 1 — ARCHITECTURAL ANALYSIS (3 sentences, plain prose):
-- Name specific materials (e.g. "white oak hardwood", "matte black fixtures")
-- Describe lighting quality and mood
-- Reference the ${style} transformation and how it elevates the ${roomType}'s value
-PART 2 — GENERATED IMAGE: One complete ${roomType} transformed in ${style} style...`;
+PART 1 — ARCHITECTURAL ANALYSIS (3 sentences, plain prose): You MUST start the first sentence by identifying the transformation as a [EXACT STYLE NAME] aesthetic, where [EXACT STYLE NAME] is ${style}. Do not use any other style names. Describe specific materials (e.g., white oak, textured plaster) and lighting that specifically support the ${style} vibe.
+PART 2 — GENERATED IMAGE: One complete ${roomType} transformed in ${style} style. MANDATORY: You must prioritize and incorporate these specific user requests: ${customNotes}. Ensure the architectural materials reflect these notes while maintaining the spatial lock.`;
 
 const response = await ai.models.generateContent({
   model: MODEL,
