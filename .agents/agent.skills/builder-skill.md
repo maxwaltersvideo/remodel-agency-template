@@ -247,3 +247,14 @@ This protocol activates whenever I provide a list or CSV of contractors:
 - **Visual Intelligence**: Use the Gemini API to analyze the contractor's existing online presence or "hallucinate" a high-end branding palette (OKLCH) based on your specialized branding rules.
 - **Vercel CLI Automation**: For each site, run `vercel project add` and `vercel env add` to set the `SITE_ID` and `BUSINESS_NAME`.
 - **Manifest Logging**: Update a master `agency-manifest.json` file in the root directory to track every site created and its Vercel URL.
+
+## 14. Automated Batch Orchestration
+
+This section governs all multi-site production runs.
+
+1. **The Trigger**: Whenever a CSV or list of contractors is provided, immediately initiate the 'Production Loop.'
+2. **Workspace Setup**: For each row, clone the Master Template into a unique local directory named `contractor-[business-name]`.
+3. **Data Injection**: Map CSV columns directly to the `.env` variables defined in the Generalization Audit.
+4. **Visual Autonomy (The Unique Reskin)**: Antigravity MUST read the 'Style_Vibe' or 'Description' column and autonomously rewrite `tailwind.config.ts` and `globals.css` to ensure visual differentiation. Do not ask for permission; use internal design logic to select matching color palettes and fonts.
+5. **Repository Logic**: Create a new GitHub repository for each contractor under the `maxwaltersvideo` organization and push the customized build.
+6. **Reporting**: After the final row is processed, generate a 'Production Report' markdown file listing the Business Name, the unique Vibe applied, and the GitHub/Vercel status.
