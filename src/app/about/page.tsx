@@ -8,29 +8,28 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: `About ${process.env.NEXT_PUBLIC_BUSINESS_NAME} | Camarillo's Boutique Design-Build Firm`,
-  description: `Since 2009, ${process.env.NEXT_PUBLIC_BUSINESS_NAME} has been Camarillo's trusted design-build partner. Family-owned, local-first, and engineered for the Ventura County coastal climate.`,
+  title: `About ${process.env.NEXT_PUBLIC_BUSINESS_NAME} | ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s Boutique Design-Build Firm`,
+  description: `Since ${process.env.NEXT_PUBLIC_FOUNDED_YEAR}, ${process.env.NEXT_PUBLIC_BUSINESS_NAME} has been ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s trusted design-build partner. Family-owned, local-first, and engineered for the ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} climate.`,
 };
 
 const timeline = [
-  { year: '2009', desc: 'Founded in Camarillo by Marcus & Elena Vargas after 12 years in Ventura County residential construction. First project: a 1,400 sq ft kitchen-to-living room expansion in Old Town.' },
-  { year: '2013', desc: 'Opened in-house architectural design studio — eliminating the design-contractor disconnect that plagued 80% of local remodels.' },
-  { year: '2017', desc: 'Certified by the National Association of the Remodeling Industry (NARI). Completed our 50th project with zero structural claims.' },
-  { year: '2021', desc: 'Launched ADU division to meet Camarillo\'s surging demand. Achieved a 6-week average permit timeline through established city relationships.' },
-  { year: '2024', desc: '140+ projects completed. Ranked #1 Design-Build Remodeler in Ventura County by Houzz. Expanded team to 12 in-house tradespeople.' },
+  { year: process.env.NEXT_PUBLIC_FOUNDED_YEAR || '2009', desc: `Founded in ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} by ${process.env.NEXT_PUBLIC_OWNER_NAMES} after years in residential construction. First project: a 1,400 sq ft expansion.` },
+  { year: 'Year 4', desc: 'Opened in-house architectural design studio — eliminating the design-contractor disconnect that plagued 80% of local remodels.' },
+  { year: 'Year 8', desc: 'Certified by the National Association of the Remodeling Industry (NARI). Completed our 50th project with zero structural claims.' },
+  { year: 'Year 12', desc: `Launched ADU division to meet ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s surging demand. Achieved a 6-week average permit timeline.` },
+  { year: 'Today', desc: `140+ projects completed. Ranked #1 Design-Build Remodeler in ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}. Expanded team.` },
 ];
 
 const values = [
   { icon: Shield, name: 'Structural Integrity', desc: 'Every project starts with a thorough structural assessment. Coastal soil, seismic loads, and marine-air corrosion are baked into every specification from day one.' },
   { icon: Heart, name: 'Your Home, Your Terms', desc: 'We work around your life — not our schedule. Fixed-price contracts, weekly progress reports, and a dedicated project manager from permit to punch-list.' },
   { icon: CheckCircle, name: 'Zero-Surprise Pricing', desc: 'Our fixed-scope proposals include every line item. We\'ve never issued an unauthorized change order in 15 years of practice.' },
-  { icon: Users, name: 'Coast-Proven Craftsmanship', desc: 'Every tradesperson on our team has at minimum 8 years of Ventura County construction experience. We hire for the specific climate conditions of our region.' },
+  { icon: Users, name: 'Proven Craftsmanship', desc: `Every tradesperson on our team has years of ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} construction experience. We hire for the specific climate conditions of our region.` },
 ];
 
 const team = [
-  { name: 'Marcus Vargas', role: 'Founder & Lead Architect', cert: 'NARI Certified Remodeler · Lic. #1102847' },
-  { name: 'Elena Vargas', role: 'Principal Designer & Co-Founder', cert: 'ASID Allied · NKBA Certified Kitchen Designer' },
-  { name: 'Josh Tanner', role: 'Senior Project Manager', cert: '11 Years Ventura County Construction' },
+  { name: process.env.NEXT_PUBLIC_OWNER_NAMES, role: 'Founders & Lead Designers', cert: 'Industry Certified Remodelers' },
+  { name: 'Core Team', role: 'Project Management & Trades', cert: `Years of ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} Construction` },
 ];
 
 export default function AboutPage() {
@@ -55,11 +54,11 @@ export default function AboutPage() {
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <p className="overline reveal" style={{ color: 'oklch(0.68 0.035 245)' }}>Our Story</p>
             <h1 className="heading-1 reveal delay-1" id="about-heading" style={{ color: '#fff', marginTop: '0.75rem', marginBottom: '1.25rem' }}>
-              Rooted in Camarillo.<br />
+              Rooted in {process.env.NEXT_PUBLIC_LOCATION_PRIMARY}.<br />
               <span style={{ fontStyle: 'italic', fontWeight: 300, color: 'oklch(0.78 0.03 245)' }}>Relentless about craft.</span>
             </h1>
             <p className="reveal delay-2" style={{ fontSize: 'var(--text-body)', color: 'oklch(0.72 0.025 245)', maxWidth: '540px', lineHeight: 1.75 }}>
-              We know what Camarillo's salt air does to caulk joints that weren't specified for coastal exposure. We know what marine-layer moisture does to drywall that wasn't properly gapped. Building here for 15 years taught us every lesson so your home doesn't have to.
+              We know what {process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s unique environment does to materials that weren't specified for local exposure. Building here taught us every lesson so your home doesn't have to.
             </p>
           </div>
         </section>
@@ -73,13 +72,13 @@ export default function AboutPage() {
                 Born from a promise<br /><em>to do it right.</em>
               </h2>
               <p className="body-lg" style={{ marginBottom: '1rem' }}>
-                In 2008, Marcus Vargas watched a homeowner in Las Posas Estates tear out a brand-new kitchen — installed by a national chain — because the cabinetry had warped beyond repair within 18 months. The cause? Standard particleboard cabinets specified without accounting for Camarillo's coastal humidity cycle.
+                In {process.env.NEXT_PUBLIC_FOUNDED_YEAR || 'the past'}, {process.env.NEXT_PUBLIC_OWNER_NAMES} watched a homeowner in {process.env.NEXT_PUBLIC_LOCATION_PRIMARY} tear out a brand-new kitchen — installed by a national chain — because the cabinetry had warped beyond repair within 18 months. The cause? Standard particleboard cabinets specified without accounting for {process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s humidity cycle.
               </p>
               <p className="body-lg" style={{ marginBottom: '1rem' }}>
-                The following year, Marcus and Elena founded {process.env.NEXT_PUBLIC_BUSINESS_NAME} with a single mandate: every material specification, every fastener, every detail would account for the specific climate conditions of the Ventura County coast.
+                The following year, {process.env.NEXT_PUBLIC_OWNER_NAMES} founded {process.env.NEXT_PUBLIC_BUSINESS_NAME} with a single mandate: every material specification, every fastener, every detail would account for the specific climate conditions of the {process.env.NEXT_PUBLIC_LOCATION_PRIMARY} area.
               </p>
               <p className="body-lg">
-                Fifteen years and 140+ projects later, that mandate has never changed. We've just gotten better at executing it.
+                Years and multiple projects later, that mandate has never changed. We've just gotten better at executing it.
               </p>
             </div>
             <div className="reveal-right" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px' }}>
@@ -91,7 +90,7 @@ export default function AboutPage() {
                   <Image src="/portfolio-bathroom.png" alt="Spa bathroom with coastal-rated materials" fill quality={75} style={{ objectFit: 'cover' }} />
                 </div>
                 <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
-                  <Image src="/portfolio-adu.png" alt="Modern ADU exterior in Camarillo" fill quality={75} style={{ objectFit: 'cover' }} />
+                  <Image src="/portfolio-adu.png" alt={`Modern ADU exterior in ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}`} fill quality={75} style={{ objectFit: 'cover' }} />
                 </div>
               </div>
             </div>
@@ -231,7 +230,7 @@ export default function AboutPage() {
               Ready to meet your<br /><em>project team?</em>
             </h2>
             <p className="body-lg reveal delay-1" style={{ maxWidth: '500px', margin: '0 auto 2rem' }}>
-              A 45-minute design consultation is the fastest way to understand what your Camarillo home is really capable of.
+              A 45-minute design consultation is the fastest way to understand what your {process.env.NEXT_PUBLIC_LOCATION_PRIMARY} home is really capable of.
             </p>
             <div className="reveal delay-2" style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/contact" className="btn-gold" id="about-cta">

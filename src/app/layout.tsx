@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: `${process.env.NEXT_PUBLIC_BUSINESS_NAME} | Camarillo's Premier Design-Build Remodeler`,
-  description: "Award-winning architectural design-build remodeling in Camarillo, CA. Kitchens, bathrooms, ADUs, and whole-home transformations built to withstand Camarillo's coastal salt-air climate. Free design consultation.",
-  keywords: "home remodeling Camarillo, kitchen remodel Camarillo CA, bathroom remodel Ventura County, ADU builder Camarillo, design-build contractor Camarillo, coastal home remodeling",
+  title: `${process.env.NEXT_PUBLIC_BUSINESS_NAME} | ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s Premier Design-Build Remodeler`,
+  description: `Award-winning architectural design-build remodeling. Kitchens, bathrooms, ADUs, and whole-home transformations built to withstand ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s climate. Free design consultation.`,
+  keywords: `home remodeling ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}, kitchen remodel ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}, bathroom remodel, ADU builder, design-build contractor`,
   openGraph: {
-    title: "${process.env.NEXT_PUBLIC_BUSINESS_NAME} | Camarillo, CA",
-    description: "Boutique architectural remodeling for Camarillo's most discerning homeowners.",
+    title: `${process.env.NEXT_PUBLIC_BUSINESS_NAME} | ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}`,
+    description: `Boutique architectural remodeling for ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s most discerning homeowners.`,
     type: "website",
     locale: "en_US",
   },
@@ -31,16 +31,16 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": `${process.env.NEXT_PUBLIC_BUSINESS_NAME}`,
-              "description": "Boutique architectural design-build remodeler in Camarillo, CA",
+              "description": `Boutique architectural design-build remodeler in ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}`,
               "url": "https://freedomhomeremodeling.com",
               "telephone": "(805) 555-0192",
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Camarillo",
+                "addressLocality": `${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}`,
                 "addressRegion": "CA",
                 "addressCountry": "US",
               },
-              "areaServed": ["Camarillo", "Oxnard", "Thousand Oaks", "Ventura", "Moorpark"],
+              "areaServed": [`${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}`],
               "priceRange": "$$$$",
             }),
           }}

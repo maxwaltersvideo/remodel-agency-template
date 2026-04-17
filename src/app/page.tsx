@@ -11,8 +11,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: `${process.env.NEXT_PUBLIC_BUSINESS_NAME} | Camarillo Design-Build Remodeler`,
-  description: 'Boutique architectural remodeling in Camarillo, CA. Kitchens, bathrooms, ADUs, and whole-home transformations engineered for Camarillo\'s coastal salt-air climate.',
+  title: `${process.env.NEXT_PUBLIC_BUSINESS_NAME} | ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} Design-Build Remodeler`,
+  description: `Boutique architectural remodeling in ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}, CA. Kitchens, bathrooms, ADUs, and whole-home transformations engineered for ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s coastal salt-air climate.`,
   alternates: { canonical: '/' },
 };
 
@@ -21,19 +21,19 @@ const services = [
     icon: Home,
     name: 'Whole-Home Remodels',
     italic: 'Design-Build',
-    desc: 'From conceptual drawings to final walkthrough — we manage every trade under one roof so you never juggle subcontractors in Camarillo\'s busy market.',
+    desc: `From conceptual drawings to final walkthrough — we manage every trade under one roof so you never juggle subcontractors in ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s busy market.`,
   },
   {
     icon: Layers,
     name: 'Kitchen & Bath',
     italic: 'Transformations',
-    desc: 'Calacatta marble, custom millwork, and marine-grade finishes that laugh at Camarillo\'s coastal humidity and last decades longer than standard installs.',
+    desc: `Calacatta marble, custom millwork, and marine-grade finishes that laugh at ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s humidity and last decades longer than standard installs.`,
   },
   {
     icon: Building,
     name: 'ADU & Room',
     italic: 'Additions',
-    desc: 'Permitted ADUs and room additions that add equity faster than anywhere in Ventura County. We handle the engineering, city approvals, and the build.',
+    desc: `Permitted ADUs and room additions that add equity faster than anywhere in the ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} area. We handle the engineering, city approvals, and the build.`,
   },
   {
     icon: Ruler,
@@ -45,7 +45,7 @@ const services = [
     icon: Shield,
     name: 'Structural & Foundation',
     italic: 'Work',
-    desc: 'Salt-air corrosion and Pacific-adjacent seismic activity demand structural rigor. Our licensed engineers design for Camarillo\'s unique coastal soil conditions.',
+    desc: `Seismic activity demands structural rigor. Our licensed engineers design for ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s unique soil conditions.`,
   },
   {
     icon: Award,
@@ -59,19 +59,19 @@ const testimonials = [
   {
     quote: 'Freedom transformed our 1987 tract home into something that looks it belongs in Architectural Digest. The attention to marine-layer light in the design was a detail I didn\'t even know to ask for.',
     author: 'Sarah & Tom K.',
-    location: 'Camarillo, CA — Kitchen & Primary Suite Remodel',
+    location: `${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} — Kitchen & Primary Suite Remodel`,
     stars: 5,
   },
   {
     quote: 'We had three other bids. Freedom was not the cheapest — but they were the only ones who came with engineered drawings before we signed anything. Completed on time, on budget.',
     author: 'David M.',
-    location: 'Camarillo Heights — Full Home Remodel, 3,200 sq ft',
+    location: `${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} — Full Home Remodel, 3,200 sq ft`,
     stars: 5,
   },
   {
     quote: 'Our ADU permit was approved in 6 weeks. Freedom handled everything — design, structural, city plan check. We\'re already renting it at $2,400/month.',
     author: 'Priya & Ankur S.',
-    location: 'Old Town Camarillo — 640 sq ft ADU Build',
+    location: `${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} — 640 sq ft ADU Build`,
     stars: 5,
   },
 ];
@@ -93,13 +93,13 @@ export default function HomePage() {
         <section className="split-screen" aria-label="Hero" id="hero">
           {/* LEFT — Text Pocket */}
           <div className="split-screen__text">
-            <p className="overline reveal">Camarillo · Ventura County · Est. 2009</p>
+            <p className="overline reveal">{process.env.NEXT_PUBLIC_LOCATION_PRIMARY} · Est. {process.env.NEXT_PUBLIC_FOUNDED_YEAR}</p>
             <h1 className="display-xl reveal delay-1" style={{ marginTop: '1rem', marginBottom: '1.25rem' }}>
               Built for the<br />Coast. <em>Designed</em><br />to Last.
             </h1>
             <p className="body-lg reveal delay-2" style={{ maxWidth: '440px', marginBottom: '2rem' }}>
-              Camarillo's salt air and marine-layer humidity are relentless — generic remodels don't survive them.
-              {process.env.NEXT_PUBLIC_BUSINESS_NAME} engineers every project for the Ventura County coastal climate,
+              {process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s environment is relentless — generic remodels don't survive it.
+              {process.env.NEXT_PUBLIC_BUSINESS_NAME} engineers every project for the local climate,
               so your investment looks immaculate in decade two, not just day one.
             </p>
             <div className="reveal delay-3" style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
@@ -136,7 +136,7 @@ export default function HomePage() {
                   4.9 stars · 87 Google Reviews
                 </p>
                 <p style={{ fontSize: '0.75rem', color: 'var(--color-ink-light)' }}>
-                  Camarillo's top-rated design-build firm
+                  {process.env.NEXT_PUBLIC_LOCATION_PRIMARY}'s top-rated design-build firm
                 </p>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function HomePage() {
           <div className="split-screen__image">
             <Image
               src="/hero-camarillo.png"
-              alt="Luxury Camarillo coastal home with white stucco facade, marine-layer hills, and California native landscaping — remodeled by ${process.env.NEXT_PUBLIC_BUSINESS_NAME}"
+              alt={`Luxury ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} home — remodeled by ${process.env.NEXT_PUBLIC_BUSINESS_NAME}`}
               fill
               priority
               fetchPriority="high"
@@ -184,7 +184,7 @@ export default function HomePage() {
             <StatCounter value={140} suffix="+" label="Projects Completed" />
             <StatCounter value={15} suffix=" Yrs" label="Workmanship Warranty" />
             <StatCounter value={98} suffix="%" label="On-Time Completion Rate" />
-            <StatCounter value={2009} prefix="" label="Serving Camarillo Since" duration={1500} />
+            <StatCounter value={parseInt(process.env.NEXT_PUBLIC_FOUNDED_YEAR || '2009', 10)} prefix="" label={`Serving ${process.env.NEXT_PUBLIC_LOCATION_PRIMARY} Since`} duration={1500} />
           </div>
         </section>
 
@@ -197,14 +197,14 @@ export default function HomePage() {
                 One Team. One Contract.<br /><em>Zero Translation Loss.</em>
               </h2>
               <p className="body-lg reveal delay-2" style={{ marginBottom: '1rem' }}>
-                Most Camarillo remodels fail because the designer hands off to a contractor who hands off to subs
+                Most {process.env.NEXT_PUBLIC_LOCATION_PRIMARY} remodels fail because the designer hands off to a contractor who hands off to subs
                 who've never seen the drawings. At Freedom, our architects, project managers, and licensed tradespeople
                 share one roof — and one accountability chain.
               </p>
               <p className="body-lg reveal delay-3" style={{ marginBottom: '2rem' }}>
-                We've spent 15 years mastering the specific challenges of Ventura County coastal builds:
-                salt-air corrosion on fasteners, marine-layer moisture in wall cavities, and the seismic
-                design codes that govern every structure within 10 miles of the Pacific.
+                We've spent years mastering the specific challenges of local builds,
+                including structural requirements and the seismic
+                design codes that govern our region.
               </p>
               <Link href="/about" className="btn-ghost reveal delay-4" id="about-strip-cta">
                 Our Story <ArrowRight size={15} />
@@ -374,10 +374,9 @@ export default function HomePage() {
           <div className="container">
             <div className="footer__grid">
               <div>
-                <p className="footer__brand">Freedom <em>Home Remodeling</em></p>
+                <p className="footer__brand" dangerouslySetInnerHTML={{ __html: process.env.NEXT_PUBLIC_BUSINESS_NAME || 'Design Build' }}></p>
                 <p className="footer__tagline">
-                  Boutique architectural design-build serving Camarillo, Thousand Oaks, Oxnard,
-                  and the greater Ventura County coastline since 2009.
+                  {process.env.NEXT_PUBLIC_BUSINESS_DESCRIPTION_LONG}
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '1.5rem' }}>
                   <a href="tel:+18055550192" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.88rem', color: 'oklch(0.78 0.020 245)' }}>
@@ -407,7 +406,7 @@ export default function HomePage() {
               <div>
                 <p className="footer__heading">Service Area</p>
                 <ul className="footer__links">
-                  {['Camarillo', 'Thousand Oaks', 'Oxnard', 'Ventura', 'Moorpark', 'Simi Valley', 'Newbury Park'].map(c => (
+                  {[`${process.env.NEXT_PUBLIC_LOCATION_PRIMARY}`, 'Surrounding Areas'].map(c => (
                     <li key={c}><span style={{ color: 'oklch(0.72 0.020 245)' }}>{c}, CA</span></li>
                   ))}
                 </ul>
